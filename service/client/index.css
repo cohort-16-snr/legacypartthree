@@ -43,3 +43,23 @@
     padding-left: 48px;
     padding-top: 31px;
   }
+  .questionsadjust{
+    position: absolute;
+    left: 116px;
+    top: 99px;
+    width: 78%;
+    height: 608px;
+  }
+  .questconadj{
+    position: absolute;
+    width: 88%;
+    left: 12%;
+    z-index: 1;
+  }
+  .close{
+    position: absolute;
+    left: 72%;
+    top: 10%;
+    width: 20px;
+    border-radius: 7px;
+  }
