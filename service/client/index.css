@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.questionscontainer{
+    display: flex;
+    justify-content: space-between;
+  }
+  .answerscontainer{
+    display: flex;
+  }
+  .detailscontainer{
+    display: flex;
+    font-size: 10px;
+  
+  }
+  .optionscontainer{
+    display: flex;
+    font-size: 10px;
+  }
+  .photoscontainer{
+    display: flex;
+  }
+  .show{
+    font-size: 10px;
+  }
+  
+  .imgSize{
+    height: 100%;
+    width: 100%;
+  }
+  .photoad{
+    position: absolute;
+    left: 163px;
+  }
+  .insidead{
+    left: -162px;
+    width: 1055px;
+
+  }
+  .showphoto{
+    width: 95%;
+    height: 720px;
+    padding-left: 48px;
+    padding-top: 31px;
+  }
