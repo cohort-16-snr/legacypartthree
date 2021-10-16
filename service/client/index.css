@@ -63,3 +63,16 @@
     width: 20px;
     border-radius: 7px;
   }
+  .triggerquestadd{
+    position: absolute;
+    left: 199px;
+    top: 99px;
+    width: 61%;
+    height: 132px;
+  }
+  .questadd{
+    position: absolute;
+    width: 88%;
+    left: 12%;
+    z-index: 1;
+  }
