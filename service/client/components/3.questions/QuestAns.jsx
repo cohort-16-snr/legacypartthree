@@ -1,19 +1,23 @@
 import React from 'react'
 
-export default function QuestAns(props) {
-  return (
+ const QuestAns = (props) => (
+  console.log(porps)
     <div>
-      <div className="questionscontainer">
-        <div className="w-2/3">
+      {props.data.results.map((e,k)=>(
+        <div className="questionscontainer">
+
+        <div key={k} className="w-2/3">
           <p className="font-sans font-bold text-base text-gray-600">
-            Q: Who what what which when where why whether how?
+            Q: {e.question_body} ?
           </p>
-          <div className="answerscontainer mt-2">
+          {e.answers.slice(0,2).map((e,k)=>{
+
+          <div key = {k} className="answerscontainer mt-2">
             <p className="font-sans font-bold text-base text-gray-600">A:</p>
             <p className="font-sans font-ms ml-2 mt-1  text-gray-600 text-xs">
-              Icing macaron bear claw jelly beans chocolate cake. Cookie oat cake
-             chocolate halvah jelly cake cotton candy soufflé topping. Jujubes topping cake gummies lemon drops.</p>
+              {e.body}</p>
           </div>
+          })}
           <div className="detailscontainer  mt-2">
             <p className="font-sans font-ms ml-6 text-gray-400 ">by User1234, January 1, 2019</p><p className=" ml-4 mr-4 text-gray-600">|</p><p className=" mr-4 text-gray-600">Helpful?
             <a href="#" className="underline ml-2 mr-1 ">Yes</a>(2)</p><p className=" mr-4 text-gray-600">|</p><p><a href="#" className="underline text-gray-600 ">Report</a></p>
@@ -23,6 +27,7 @@ export default function QuestAns(props) {
           <p>Helpful?<a href="#" className="underline ml-2 mr-1">Yes</a>(25)</p><p className=" ml-4">|</p><p><a href="#" className="underline ml-4">Add Answer</a></p>
         </div>
       </div>
+  ))}
 
       <div className="questionscontainer  mt-3">
         <div className="w-2/3">
@@ -60,6 +65,7 @@ export default function QuestAns(props) {
     </div>
 
 
-  )
-}
+  
+      )
 
+export default QuestAns

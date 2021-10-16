@@ -1,15 +1,16 @@
 import React from 'react'
 
-export default function SeeMoreAns() {
+export default function SeeMoreAns(props) {
+
     return (
 
-        <div  className=" questconadj h-screen">
-            <button className =" close border border-gray-600 bg-transparent " >  X</button>
+      <div  className=" questconadj h-screen ">
+        <button onClick = {()=>props.handle()} className =" close border border-gray-600 bg-transparent " >  X</button>
         <div   className="bg-gray-400 bg-opacity-60  h-screen w-3/4 ml-16 ">
        <div className="relative">
         
             <div className="questionsadjust w-7/12 rounded  h-96 bg-white ">
-            <div className="questionscontainer">
+            <div className="questionscontainer mt-8">
         <div className="w-2/3">
           <p className="font-sans font-bold text-base text-gray-600">
             Q: Who what what which when where why whether how?
@@ -34,6 +35,6 @@ export default function SeeMoreAns() {
     
         </div>
         </div>
-
+      
     )
 }
