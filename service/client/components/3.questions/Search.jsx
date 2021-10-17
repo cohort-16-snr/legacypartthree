@@ -1,14 +1,32 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-export default function Search() {
-    return (
-        <div>
+export default class Search extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            value: ""
+        }
+        this.handleChange = this.handleChange.bind(this)
+        
+    }
+    handleChange(e) {
+        this.props.lift(this.state.value)
+        this.setState({
+        [e.target.name]: e.target.value
+        })
+    }
+   
+    
+    render() {
+        return (
+            <div>
+                <button onClick = {()=>console.log(this.state.value)}>LOGGOGOGO</button>
             <div>
                 <p className="font-sans font-ms text-sm text-gray-600 mb-4">Questions & answers </p>
             </div>
             <form className="relative w-full">
-                <input type="text" className="px-5 py-3 border border-gray-600 min-w-full"  placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." />
-                <button className="flex items-center border-t-0 focus:border-black" >
+                <input  type="text" name = "value" className="px-5 py-3 border border-gray-600 min-w-full"  onChange = {this.handleChange} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." />
+                <button onClick={()=>this.props.lift(this.state.value)}  className="flex items-center border-t-0 focus:border-black" >
                     <svg className="w-6 h-6 absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-800" fill="currentColor" xmlns="http://www.w3.org/2000/svg "
                         viewBox="0 0 22 22">
                         <path
@@ -17,5 +35,6 @@ export default function Search() {
                 </button>
             </form>
         </div>
-    )
+        )
+    }
 }

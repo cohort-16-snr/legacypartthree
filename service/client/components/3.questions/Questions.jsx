@@ -8,6 +8,7 @@ import SeeMoreAns from './SeeMoreAns.jsx'
 import TriggerAddQuest from './TriggerAddQuest.jsx'
 import $ from "jquery"
 import Loadmore from './Loadmore.jsx'
+import Searchedquest from './Searchedquest.jsx'
 
 export default class Questions extends Component {
     constructor(props) {
@@ -29,12 +30,15 @@ export default class Questions extends Component {
                 on: false,
                 off: true
             },
-            data: []
+            data: [],
+            searchingfor : '',
+            filtreddata : []
         }
         this.handleClickShow = this.handleClickShow.bind(this)
         this.handleClick = this.handleClick.bind(this)
         this.handleClickAdd = this.handleClickAdd.bind(this)
         this.handleClickLoad = this.handleClickLoad.bind(this)
+        this.lift = this.lift.bind(this)
 
     }
     handleClick() {
@@ -54,6 +58,17 @@ export default class Questions extends Component {
             })
         }
     }
+    lift (option){
+        var filtred = this.state.data.results.filter((e)=>{
+           return e.question_body.includes(this.state.searchingfor)
+            
+        })
+        this.setState({
+            searchingfor : option,
+            filtreddata : filtred
+        })
+
+    }
     handleClickShow() {
         if (this.state.showmoreclick.on === false)
             this.setState({
@@ -71,10 +86,17 @@ export default class Questions extends Component {
             })
         }
     }
+    searchCheck(){
+      
+    }
     renderquestCheck(){
         if (this.state.loadmore.on === true) {
             return <Loadmore data={this.state.data.results} load={this.handleClickLoad} />
         }
+        else if(this.state.searchingfor.length >= 3){
+           
+            return <Searchedquest load = {this.handleClickLoad} data  = {this.state.filtreddata} />
+            }
         else {
            return <QuestAns load={this.handleClickLoad} data={this.state.data.results} handle={this.handleClick} />
         }
@@ -96,6 +118,7 @@ export default class Questions extends Component {
             })
         }
     }
+    
     componentDidMount() {
         this.fetch()
     }
@@ -151,13 +174,14 @@ export default class Questions extends Component {
     render() {
         return (
             <div>
+                <button onClick= {()=>console.log(this.state.filtreddata)}>log</button>
                 <div>
                     {this.check()}
 
                 </div>
                 <div className=" pr-16 pl-16">
                     <div className="grid grid-cols-1 gap-4  w-full  mx-auto">
-                        <Search />
+                        <Search lift = {this.lift} />
                         {this.renderquestCheck()}
                     </div>
                     <div className="grid gap-2  w-3/5 mt-4 ml-4 mx-auto" style={{ display: 'flex' }}>
