@@ -29,6 +29,7 @@ export default class Questions extends Component {
         this.handleClickShow = this.handleClickShow.bind(this)
         this.handleClick = this.handleClick.bind(this)
         this.handleClickAdd = this.handleClickAdd.bind(this)
+       
     }
     handleClick() {
         if (this.state.photoclick.on === false)
@@ -73,7 +74,7 @@ $.ajax({
     type : 'GET',
     url : server,
     headers : {
-        "Authorization" : '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'
+        "Authorization" : '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'
     }
 })
 .then((data)=>{
@@ -126,11 +127,11 @@ $.ajax({
                 <div className=" pr-16 pl-16">
                     <div className="grid grid-cols-1 gap-4  w-full  mx-auto">
                         <Search />
-                        <QuestAns handle={this.handleClick} />
+                        <QuestAns data = {this.state.data.results} handle={this.handleClick} />
                     </div>
                     <div className="grid gap-2  w-3/5 mt-4 ml-4 mx-auto" style={{ display: 'flex' }}>
-                        <MoreAns data = {this.state.data} handle={this.handleClickShow} />
-                        <AddQuest handle={this.handleClickAdd} />
+                        <MoreAns  handle={this.handleClickShow} />
+                        <AddQuest  handle={this.handleClickAdd} />
                     </div>
                 </div>
             </div>
