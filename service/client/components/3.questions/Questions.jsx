@@ -7,6 +7,7 @@ import ShowPhotoClick from "./ShowPhotoClick.jsx"
 import SeeMoreAns from './SeeMoreAns.jsx'
 import TriggerAddQuest from './TriggerAddQuest.jsx'
 import $ from "jquery"
+import Loadmore from './Loadmore.jsx'
 
 export default class Questions extends Component {
     constructor(props) {
@@ -24,11 +25,17 @@ export default class Questions extends Component {
                 on: false,
                 off: true
             },
-            data : []
+            loadmore: {
+                on: false,
+                off: true
+            },
+            data: []
         }
         this.handleClickShow = this.handleClickShow.bind(this)
         this.handleClick = this.handleClick.bind(this)
         this.handleClickAdd = this.handleClickAdd.bind(this)
+        this.handleClickLoad = this.handleClickLoad.bind(this)
+
     }
     handleClick() {
         if (this.state.photoclick.on === false)
@@ -64,27 +71,52 @@ export default class Questions extends Component {
             })
         }
     }
-    componentDidMount(){
-this.fetch()
+    renderquestCheck(){
+        if (this.state.loadmore.on === true) {
+            return <Loadmore data={this.state.data.results} load={this.handleClickLoad} />
+        }
+        else {
+           return <QuestAns load={this.handleClickLoad} data={this.state.data.results} handle={this.handleClick} />
+        }
     }
-    fetch(){
-       const server = "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/?product_id=40341"
-$.ajax({
-    type : 'GET',
-    url : server,
-    headers : {
-        "Authorization" : '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'
+    handleClickLoad() {
+        if (this.state.loadmore.on === false)
+            this.setState({
+                loadmore: {
+                    on: true,
+                    off: false
+                }
+            })
+        else {
+            this.setState({
+                loadmore: {
+                    on: false,
+                    off: true
+                }
+            })
+        }
     }
-})
-.then((data)=>{
-    console.log(data)
-    this.setState({
-        data : data
-    })
-})
-.catch(err=>{
-    console.log(err);
-})
+    componentDidMount() {
+        this.fetch()
+    }
+    fetch() {
+        const server = "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/?product_id=40341"
+        $.ajax({
+            type: 'GET',
+            url: server,
+            headers: {
+                "Authorization": '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'
+            }
+        })
+            .then((data) => {
+                console.log(data)
+                this.setState({
+                    data: data
+                })
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     handleClickAdd() {
@@ -107,7 +139,6 @@ $.ajax({
     check() {
         if (this.state.photoclick.on === true) {
             return <ShowPhotoClick handle={this.handleClick} />
-
         }
         if (this.state.showmoreclick.on === true) {
             return <SeeMoreAns handle={this.handleClickShow} />
@@ -115,6 +146,7 @@ $.ajax({
         if (this.state.addquest.on === true) {
             return <TriggerAddQuest handle={this.handleClickAdd} />
         }
+       
     }
     render() {
         return (
@@ -126,10 +158,10 @@ $.ajax({
                 <div className=" pr-16 pl-16">
                     <div className="grid grid-cols-1 gap-4  w-full  mx-auto">
                         <Search />
-                        <QuestAns handle={this.handleClick} />
+                        {this.renderquestCheck()}
                     </div>
                     <div className="grid gap-2  w-3/5 mt-4 ml-4 mx-auto" style={{ display: 'flex' }}>
-                        <MoreAns data = {this.state.data} handle={this.handleClickShow} />
+                        <MoreAns handle={this.handleClickShow} />
                         <AddQuest handle={this.handleClickAdd} />
                     </div>
                 </div>
