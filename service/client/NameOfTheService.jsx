@@ -1,5 +1,5 @@
 import "./index.css";
-import Questions from "./components/3.questions/Questions.jsx"
+import Questions from "./components/3.questions/Questions.js"
 const NameOfTheService = () => {
 
   return (
