@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-import AddQuest from "./AddQuest.jsx"
-import MoreAns from "./MoreAns.jsx"
-import QuestAns from "./QuestAns.jsx"
-import Search from "./Search.jsx"
-import ShowPhotoClick from "./ShowPhotoClick.jsx"
-import SeeMoreAns from './SeeMoreAns.jsx'
-import TriggerAddQuest from './TriggerAddQuest.jsx'
+import AddQuest from "./AddQuest.js"
+import MoreAns from "./MoreAns.js"
+import QuestAns from "./QuestAns.js"
+import Search from "./Search.js"
+import ShowPhotoClick from "./ShowPhotoClick.js"
+import SeeMoreAns from './SeeMoreAns.js'
+import TriggerAddQuest from './TriggerAddQuest.js'
 import $ from "jquery"
-import Loadmore from './Loadmore.jsx'
-import Searchedquest from './Searchedquest.jsx'
-import WriteAnswer from './WriteAnswer.jsx'
+import Loadmore from './Loadmore.js'
+import Searchedquest from './Searchedquest.js'
+import WriteAnswer from './WriteAnswer.js'
 
 export default class Questions extends Component {
     constructor(props) {
@@ -151,7 +151,7 @@ export default class Questions extends Component {
             type: 'GET',
             url: server,
             headers: {
-                "Authorization": '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'
+                "Authorization": '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'
             }
         })
             .then((data) => {
