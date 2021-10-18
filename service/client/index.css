@@ -81,23 +81,22 @@
   .textspace{
     position: absolute;
     top: 37%;
+    left: 1%;
   }
   .inputspace{
     position: absolute;
-    left: 33%;
-    top: 33%;
-    width: 407px;
+    left: 36%;
+    top: 35%;
+    width: 376px;
   }
   .buttonspace{
     position: absolute;
     left: 76%;
-    top: 71%;
+    top: 66%;
     border-radius: 20px;
-    background: repeating-linear-gradient(
-45deg, black, transparent 100px);
     color: dimgrey;
     font-weight: bold;
-    height: 26%;
+    height: 32%;
     width: 22%;
     font-size: 82%;
   }
@@ -109,4 +108,10 @@
     border-radius: 7px;
     background: gray;
     color: darkred;
+  }
+  .inputwrite{
+    position: absolute;
+    left: 38%;
+    top: 35%;
+    width: 362px;
   }
