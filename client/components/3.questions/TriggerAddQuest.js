@@ -17,7 +17,7 @@ export default class TriggerAddQuest extends Component {
                   </p>
                   <div className="answerscontainer mt-6 ml-6">
                     <p  className=" textspace font-sans font-bold text-base text-gray-600">WRITE YOUR QUESTION HERE :</p>
-                    <input className="inputspace font-sans  ml-2 mt-1  border border-gray-600 " />
+                    <input className="inputwrite font-sans  ml-2 mt-1  border border-gray-600 " />
                     <button  className =" buttonspace border border-gray-600">SUBMIT YOUR QUESTION</button>
                   </div>
                 </div>
